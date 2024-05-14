@@ -49,7 +49,6 @@ dependencies {
     implementation("androidx.appcompat:appcompat:1.6.1")
     implementation("com.google.android.material:material:1.11.0")
     implementation("androidx.constraintlayout:constraintlayout:2.1.4")
-    implementation("com.google.firebase:firebase-firestore:24.11.1")
     implementation("com.android.car.ui:car-ui-lib:2.6.0")
     testImplementation("junit:junit:4.13.2")
     implementation ("androidx.activity:activity-ktx:1.9.0")
@@ -74,9 +73,15 @@ dependencies {
 
     // firebase
     implementation("com.google.firebase:firebase-auth:22.3.1")
+    implementation("com.google.firebase:firebase-firestore:25.0.0")
+    implementation("com.google.firebase:firebase-storage:21.0.0")
 
     //Navigation and safe args
     val nav_version = "2.7.7"
     implementation ("androidx.navigation:navigation-fragment-ktx:$nav_version")
     implementation ("androidx.navigation:navigation-ui-ktx:$nav_version")
+
+    //Glide
+    implementation ("com.github.bumptech.glide:glide:4.13.0")
+
 }

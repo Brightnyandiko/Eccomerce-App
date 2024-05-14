@@ -6,7 +6,9 @@ import androidx.navigation.findNavController
 import androidx.navigation.ui.setupWithNavController
 import com.example.ecommerce_app.R
 import com.example.ecommerce_app.databinding.ActivityShoppingBinding
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class ShoppingActivity : AppCompatActivity() {
 
     val binding by lazy {
