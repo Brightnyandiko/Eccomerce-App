@@ -84,4 +84,7 @@ dependencies {
     //Glide
     implementation ("com.github.bumptech.glide:glide:4.13.0")
 
+    //circular image
+    implementation ("de.hdodenhof:circleimageview:3.1.0")
+
 }
