@@ -3,6 +3,8 @@ plugins {
     id("org.jetbrains.kotlin.android")
     id("com.google.gms.google-services")
     id("kotlin-kapt")
+    id("kotlin-parcelize")
+    id("androidx.navigation.safeargs.kotlin")
     id("dagger.hilt.android.plugin")
     kotlin("kapt")
 }
@@ -73,7 +75,9 @@ dependencies {
 
     // firebase
     implementation("com.google.firebase:firebase-auth:22.3.1")
+    implementation("com.google.firebase:firebase-firestore-ktx:25.0.0")
     implementation("com.google.firebase:firebase-firestore:25.0.0")
+    implementation("com.google.firebase:firebase-common-ktx:21.0.0")
     implementation("com.google.firebase:firebase-storage:21.0.0")
 
     //Navigation and safe args
@@ -86,5 +90,8 @@ dependencies {
 
     //circular image
     implementation ("de.hdodenhof:circleimageview:3.1.0")
+
+    //Android Ktx
+    implementation ("androidx.fragment:fragment-ktx:1.7.0")
 
 }

@@ -156,7 +156,7 @@
             app:layout_constraintStart_toStartOf="@id/linearProductPref"
             app:layout_constraintEnd_toEndOf="@id/linearProductPref"
             app:layout_constraintBottom_toBottomOf="parent"
-            android:text="Login"
+            android:text="Add to Cart"
             app:spinning_bar_color="@color/white"/>
 
 

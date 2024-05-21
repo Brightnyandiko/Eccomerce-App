@@ -59,26 +59,30 @@ class MainCategoryViewModel @Inject constructor(
             .whereEqualTo("category","Best Deals").get()
             .addOnSuccessListener { result ->
                 val bestDealsProducts = result.toObjects(Product::class.java)
+                Log.d("Bright", "Data ${bestDealsProducts}")
+
                 viewModelScope.launch {
-                    _specialProducts.emit(Resource.Success(bestDealsProducts))
+                    _bestDealsProduct.emit(Resource.Success(bestDealsProducts))
                 }
 
             }.addOnFailureListener {
+                Log.d("Bright", "Data ${it.message}")
+
                 viewModelScope.launch {
-                    _specialProducts.emit(Resource.Error(it.message.toString()))
+                    _bestDealsProduct.emit(Resource.Error(it.message.toString()))
                 }
             }
     }
 
     fun fetchBestProducts() {
-        if (!pagingInfo.isPagingend) {
+        if (!pagingInfo.isPagingEnd) {
             viewModelScope.launch {
                 _bestProducts.emit(Resource.Loading())
             }
             firestore.collection("Products").limit(pagingInfo.bestProductsPage * 10).get()
                 .addOnSuccessListener { result ->
                     val bestProducts = result.toObjects(Product::class.java)
-                    pagingInfo.isPagingend = bestProducts == pagingInfo.oldBestProducts
+                    pagingInfo.isPagingEnd = bestProducts == pagingInfo.oldBestProducts
                     pagingInfo.oldBestProducts = bestProducts
                     viewModelScope.launch {
                         _bestProducts.emit(Resource.Success(bestProducts))
@@ -96,5 +100,5 @@ class MainCategoryViewModel @Inject constructor(
 internal data class PagingInfo(
     var bestProductsPage: Long = 1,
     var oldBestProducts: List<Product> = emptyList(),
-    var isPagingend: Boolean = false
+    var isPagingEnd: Boolean = false
 )
