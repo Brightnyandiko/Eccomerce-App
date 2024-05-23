@@ -1,5 +1,6 @@
 package com.example.ecommerce_app.adapters
 
+import android.annotation.SuppressLint
 import android.graphics.drawable.ColorDrawable
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -52,6 +53,7 @@ class AddressAdapter : Adapter<AddressAdapter.AddressViewHolder>() {
     }
     var selectedAddress = -1
 
+    @SuppressLint("NotifyDataSetChanged")
     override fun onBindViewHolder(holder: AddressViewHolder, position: Int) {
         val address = differ.currentList[position]
         holder.bind(address, selectedAddress == position)
@@ -60,8 +62,15 @@ class AddressAdapter : Adapter<AddressAdapter.AddressViewHolder>() {
             if (selectedAddress == 0)
                 notifyItemChanged(selectedAddress)
             selectedAddress = holder.adapterPosition
-            notifyItemChanged(selectedAddress)
+//            notifyItemChanged(selectedAddress)
+            notifyDataSetChanged()
             onClick?.invoke(address)
+        }
+    }
+
+    init {
+        differ.addListListener{ _, _ ->
+            notifyDataSetChanged()
         }
     }
 

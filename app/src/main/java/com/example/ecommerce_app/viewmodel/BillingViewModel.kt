@@ -1,5 +1,6 @@
 package com.example.ecommerce_app.viewmodel
 
+import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.ecommerce_app.data.Address
@@ -22,12 +23,12 @@ class BillingViewModel @Inject constructor(
     val address = _address.asStateFlow()
 
     init {
-        getUserAddress()
+        getUserAddresses()
     }
 
-    fun getUserAddress(){
+    fun getUserAddresses(){
         viewModelScope.launch { _address.emit(Resource.Loading()) }
-        firestore.collection("").document(auth.uid!!).collection("address")
+        firestore.collection("user").document(auth.uid!!).collection("address")
             .addSnapshotListener{ value, error ->
                 if (error != null) {
                     viewModelScope.launch { _address.emit(Resource.Error(error.message.toString())) }
@@ -35,6 +36,7 @@ class BillingViewModel @Inject constructor(
                 }
                 val address = value?.toObjects(Address::class.java)
                 viewModelScope.launch { _address.emit(Resource.Success(address!!)) }
+                Log.d("Bright", "Data ${address}")
             }
     }
 }
