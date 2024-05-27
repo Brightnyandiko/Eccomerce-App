@@ -19,8 +19,8 @@ import com.example.ecommerce_app.adapters.AddressAdapter
 import com.example.ecommerce_app.adapters.BillingAdapter
 import com.example.ecommerce_app.data.Address
 import com.example.ecommerce_app.data.CartProduct
-import com.example.ecommerce_app.data.Order
-import com.example.ecommerce_app.data.OrderStatus
+import com.example.ecommerce_app.data.order.Order
+import com.example.ecommerce_app.data.order.OrderStatus
 import com.example.ecommerce_app.databinding.FragmentBillingBinding
 import com.example.ecommerce_app.util.HorizontalItemDecoration
 import com.example.ecommerce_app.util.Resource
